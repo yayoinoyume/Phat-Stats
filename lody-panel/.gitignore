@@ -1,0 +1,11 @@
+backups/
+build/
+*.bin
+*.bak
+*.png
+__pycache__/
+*.pyc
+docs/
+*.md
+preview/designers*.html
+preview/live-*.png
