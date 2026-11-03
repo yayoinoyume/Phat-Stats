@@ -126,42 +126,43 @@ constexpr int16_t STATUS_GLYPH_TOP = 56;
 constexpr int16_t STATUS_EN_X = 16;
 constexpr int16_t STATUS_EN_BASELINE = 132;
 
-constexpr int16_t PROVIDER_ICON_X = 16;
-constexpr int16_t PROVIDER_ICON_Y = 146;
-constexpr int16_t PROVIDER_ICON_SIZE = 16;
-constexpr int16_t PROVIDER_TEXT_X = 36;
-constexpr int16_t PROVIDER_TEXT_BASELINE = 158;
-constexpr int16_t PROVIDER_TEXT_RIGHT = 224;
+constexpr int16_t PROVIDER_ICON_X = 156;
+constexpr int16_t PROVIDER_ICON_Y = 64;
+constexpr int16_t PROVIDER_ICON_SIZE = 44;
+constexpr int16_t PROVIDER_TEXT_X = 156;
+constexpr int16_t PROVIDER_TEXT_BASELINE = 124;
+constexpr int16_t PROVIDER_TEXT_RIGHT = 198;
 
 constexpr int16_t SCAN_X = 16;
 constexpr int16_t SCAN_Y = 136;
-constexpr int16_t SCAN_WIDTH = 208;
+constexpr int16_t SCAN_WIDTH = 174;
 constexpr int16_t SCAN_HEIGHT = 2;
 constexpr int16_t SCAN_SEGMENT = 64;
-constexpr int16_t SCAN_STEP = 8;
+constexpr int16_t SCAN_STEP = 5;
 constexpr uint8_t SCAN_PHASES =
     static_cast<uint8_t>((SCAN_WIDTH - SCAN_SEGMENT) / SCAN_STEP + 1);
 
-constexpr int16_t SPINNER_CX = 196;
-constexpr int16_t SPINNER_CY = 96;
-constexpr int16_t SPINNER_R = 22;
-constexpr int16_t SPINNER_RIN = 11;
+constexpr int16_t SPINNER_CX = 216;
+constexpr int16_t SPINNER_CY = 132;
+constexpr int16_t SPINNER_R = 16;
+constexpr int16_t SPINNER_RIN = 8;
 
 constexpr int16_t TITLE_X = 16;
-// 166/196 是文本顶部；绘制时加 wqy16 的 ascent 得到基线。
-constexpr int16_t TITLE_TOP_1 = 166;
-constexpr int16_t TITLE_TOP_2 = 196;
+// 156/176 是文本顶部；绘制时加 wqy16 的 ascent 得到基线。
+constexpr int16_t TITLE_TOP_1 = 156;
+constexpr int16_t TITLE_TOP_2 = 176;
 constexpr int16_t TITLE_MAX_W = 208;
 constexpr int16_t QUIET_CLOCK_BASELINE = 182;
 constexpr int16_t QUIET_CLOCK_TOP = 154;
 constexpr int16_t QUIET_CLOCK_WIDTH = 100;
 constexpr int16_t QUIET_CLOCK_HEIGHT = 38;
 
-constexpr int16_t META_X = 16;
-// 214 是文本顶部；FreeSans9pt7b ascent 12，故基线 226。
-constexpr int16_t META_TOP = 214;
+constexpr int16_t META_X = 136;
+// 218 是文本顶部；FreeSans9pt7b ascent 12，故基线 230。
+constexpr int16_t META_TOP = 218;
 constexpr int16_t META_BASELINE = META_TOP + 12;  // FreeSans9pt7b ascent
-constexpr int16_t META_MAX_W = 208;
+constexpr int16_t META_LEFT_MAX_W = 38;
+constexpr int16_t META_RIGHT = 238;
 
 // ---------------------------------------------------------------------------
 // 右侧 80x240 竖栏

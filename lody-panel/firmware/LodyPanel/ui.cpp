@@ -497,10 +497,10 @@ void drawStatus(PanelState shown) {
   tft.print(statusEnglish(shown));
 }
 
-const int16_t SPOKE_OUT_X[8] = {0, 16, 22, 16, 0, -16, -22, -16};
-const int16_t SPOKE_OUT_Y[8] = {-22, -16, 0, 16, 22, 16, 0, -16};
-const int16_t SPOKE_IN_X[8] = {0, 8, 11, 8, 0, -8, -11, -8};
-const int16_t SPOKE_IN_Y[8] = {-11, -8, 0, 8, 11, 8, 0, -8};
+const int16_t SPOKE_OUT_X[8] = {0, 11, 16, 11, 0, -11, -16, -11};
+const int16_t SPOKE_OUT_Y[8] = {-16, -11, 0, 11, 16, 11, 0, -11};
+const int16_t SPOKE_IN_X[8] = {0, 6, 8, 6, 0, -6, -8, -6};
+const int16_t SPOKE_IN_Y[8] = {-8, -6, 0, 6, 8, 6, 0, -6};
 
 void drawSpinnerShape() {
   const int16_t box = static_cast<int16_t>(SPINNER_R + 2) * 2;
@@ -553,12 +553,15 @@ void drawTitleArea(const Snapshot& snapshot, const SessionView* featured,
 
 void drawMeta(const char* left, const char* right, uint16_t leftColor) {
   tft.setFont(&FreeSans9pt7b);
-  const int16_t width = drawClippedText(META_X, META_BASELINE, left, 150, leftColor);
-  const int16_t dotX = META_X + width + 5;
+  const int16_t width =
+      drawClippedText(META_X, META_BASELINE, left, META_LEFT_MAX_W, leftColor);
+  const int16_t dotX = META_X + width + 4;
   tft.fillCircle(dotX, META_BASELINE - 4, 1, COLOR_GRAY);
-  tft.setTextColor(COLOR_GRAY);
-  tft.setCursor(dotX + 7, META_BASELINE);
-  tft.print(right);
+  const int16_t rightX = dotX + 4;
+  const int16_t rightMax = META_RIGHT - rightX;
+  if (rightMax > 6) {
+    drawClippedText(rightX, META_BASELINE, right, rightMax, COLOR_GRAY);
+  }
 }
 
 void drawMetaFor(const Snapshot& /*snapshot*/, const SessionView* featured,

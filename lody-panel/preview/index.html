@@ -95,7 +95,7 @@
 
   .scanline {
     display: none; position: absolute; left: 16px; top: 136px;
-    width: 208px; height: 2px; overflow: hidden; pointer-events: none;
+    width: 174px; height: 2px; overflow: hidden; pointer-events: none;
   }
   .stage.working .scanline { display: block; }
   .scanline::after {
@@ -107,49 +107,50 @@
   @keyframes scan { to { left: 100%; } }
 
   .spinner {
-    display: none; position: absolute; left: 174px; top: 74px;
-    width: 44px; height: 44px; pointer-events: none;
+    display: none; position: absolute; left: 200px; top: 116px;
+    width: 32px; height: 32px; pointer-events: none;
   }
   .stage.working .spinner { display: block; animation: spin .64s steps(8) infinite; }
   .spinner i {
-    position: absolute; left: 21px; top: 1px; width: 2px; height: 10px;
+    position: absolute; left: 15px; top: 1px; width: 2px; height: 8px;
     border-radius: 1px; background: var(--accent);
-    transform-origin: 1px 21px;
+    transform-origin: 1px 15px;
   }
   @keyframes spin { to { transform: rotate(360deg); } }
 
   .provider {
-    position: absolute; left: 16px; right: 16px; top: 146px; height: 16px;
-    display: flex; align-items: center; gap: 4px;
+    position: absolute; left: 156px; top: 64px;
+    width: 44px; height: 64px;
     font-size: 9px; line-height: 16px; white-space: nowrap;
     color: var(--gray);
   }
   .provider[hidden] { display: none !important; }
   .provider [hidden] { display: none !important; }
-  .provider-icon { width: 16px; height: 16px; flex: none; display: block; object-fit: contain; }
+  .provider-icon { width: 44px; height: 44px; display: block; object-fit: contain; }
   .provider-icon.invert { filter: brightness(0) invert(1); }
   .provider-model {
-    min-width: 0; color: var(--gray);
+    position: absolute; left: 0; top: 48px; width: 44px;
+    color: var(--gray);
     overflow: hidden; text-overflow: ellipsis;
     transform: translateY(1px);
   }
 
   .title {
-    position: absolute; left: 16px; top: 166px; width: 208px;
+    position: absolute; left: 16px; top: 156px; width: 208px;
     font-family: "Noto Sans CJK SC", "Noto Sans CJK JP", "Noto Sans SC",
       "PingFang SC", "Microsoft YaHei", sans-serif;
     font-size: 16px; line-height: 22px; font-weight: 500; color: var(--cream);
     white-space: pre-line; overflow: hidden;
   }
   .bigclock {
-    position: absolute; left: 16px; top: 166px;
+    position: absolute; left: 16px; top: 154px;
     font-size: 34px; line-height: 1; font-weight: 700;
     letter-spacing: -.03em; color: var(--cream);
     font-variant-numeric: tabular-nums;
   }
   .meta {
-    position: absolute; left: 16px; top: 214px; max-width: 208px;
-    font-size: 11px; color: var(--gray); letter-spacing: .01em;
+    position: absolute; left: 16px; top: 218px; max-width: 208px;
+    font-size: 11px; line-height: 12px; color: var(--gray); letter-spacing: .01em;
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   }
   .title[hidden], .bigclock[hidden] { display: none !important; }
@@ -842,7 +843,7 @@
   var DEMO_PROVIDERS = {
     'demo-1': { provider: 'pi', model: 'DeepSeek' },
     'demo-2': { provider: 'claudecode', model: 'Claude' },
-    'demo-3': { provider: 'codex', model: 'Gemini' },
+    'demo-3': { provider: 'codex', model: 'GPT' },
     'demo-4': { provider: 'qwen', model: 'Qwen' },
     'demo-5': { provider: 'openai', model: 'GPT' },
     'demo-6': { provider: 'kimi', model: '' },
@@ -855,28 +856,28 @@
       state: 'working',
       counts: { working: 2, needs: 0, done: 1 },
       sessions: [
-        { id: 'demo-1', state: 'working', title: '重构支付接口', project: 'example-app', machine: 'local', age: 95 },
-        { id: 'demo-2', state: 'working', title: '迁移测试环境数据库', project: 'example-app', machine: 'local', age: 240 },
-        { id: 'demo-3', state: 'done', title: '发布 2.4 更新说明', project: 'backup-service', machine: 'remote', age: 1800 }
+        { id: 'demo-1', state: 'working', title: 'Refactor payments API', project: 'example-app', machine: 'local', age: 95 },
+        { id: 'demo-2', state: 'working', title: 'Add retry handling to the uploader', project: 'demo-service', machine: 'local', age: 240 },
+        { id: 'demo-3', state: 'done', title: 'Polish the settings screen', project: 'example-web', machine: 'remote', age: 1800 }
       ]
     },
     {
       state: 'needs_you',
       counts: { working: 1, needs: 2, done: 1 },
       sessions: [
-        { id: 'demo-4', state: 'needs_you', title: '检查设备电量状态', project: 'backup-service', machine: 'remote', age: 312 },
-        { id: 'demo-5', state: 'needs_you', title: '确认隧道恢复演练结果', project: 'ops-hub', machine: 'local', age: 540 },
-        { id: 'demo-1', state: 'working', title: '重构支付接口', project: 'example-app', machine: 'local', age: 95 },
-        { id: 'demo-6', state: 'done', title: '评审服务密钥补丁', project: 'agent-service', machine: 'remote', age: 7200 }
+        { id: 'demo-4', state: 'needs_you', title: 'Review the release checklist', project: 'demo-service', machine: 'remote', age: 312 },
+        { id: 'demo-5', state: 'needs_you', title: 'Update the onboarding copy', project: 'example-app', machine: 'local', age: 540 },
+        { id: 'demo-1', state: 'working', title: 'Refactor payments API', project: 'example-app', machine: 'local', age: 95 },
+        { id: 'demo-6', state: 'done', title: 'Clean up the nightly report', project: 'demo-tools', machine: 'remote', age: 7200 }
       ]
     },
     {
       state: 'done',
       counts: { working: 0, needs: 0, done: 3 },
       sessions: [
-        { id: 'demo-7', state: 'done', title: '面板多账号接入与扫码登录', project: 'example-app', machine: 'local', age: 2400 },
-        { id: 'demo-8', state: 'done', title: '同步主分支并解决发布冲突', project: 'blog-app', machine: 'local', age: 5400 },
-        { id: 'demo-9', state: 'done', title: '晨间早报', project: 'chat', machine: 'remote', age: 9000 }
+        { id: 'demo-7', state: 'done', title: 'Ship the dashboard polish', project: 'example-web', machine: 'local', age: 2400 },
+        { id: 'demo-8', state: 'done', title: 'Sync the fork and resolve conflicts', project: 'example-app', machine: 'local', age: 5400 },
+        { id: 'demo-9', state: 'done', title: 'Morning summary', project: 'demo-chat', machine: 'remote', age: 9000 }
       ]
     },
     {
